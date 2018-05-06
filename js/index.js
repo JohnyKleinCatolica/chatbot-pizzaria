@@ -12,7 +12,8 @@ var sendChannel,
     chatWindow = document.querySelector('.chat-window'),
     chatWindowMessage = document.querySelector('.chat-window-message'),
     chatThread = document.querySelector('.chat-thread');
-    enter_msg = "";    
+    enter_msg = ""
+    resposta_padrao = "Desculpa, não entendi. Mas estou aprendendo!";    
 
 // Create WebRTC connection
 createConnection();
@@ -80,6 +81,8 @@ function createConnection () {
 function sendData () {
     enter_msg += "<li>" + $("#enter_msg_chat").val() + "</li>";
     $("#msgs_chat").html(enter_msg);
+    getResponse();
+    $("#enter_msg_chat").val("");
 }
 
 function gotLocalDescription (desc) {
@@ -141,4 +144,27 @@ function handleMessage (event) {
 
 function handleReceiveChannelStateChange () {
     var readyState = receiveChannel.readyState;
+}
+function getResponse() 
+{
+    $.ajax({
+        url: 'https://api.wit.ai/message',
+        data: {
+            'q': $("#enter_msg_chat").val(),
+            'access_token' : '2ULD2JQPRHCSVGNXUJWT74ZBSNULVE2Y'
+        },
+        dataType: 'jsonp',
+        method: 'GET',
+        success: function(response) {
+            var resposta_robo = resposta_padrao;
+
+            if (response.entities[Object.keys(response.entities)[0]] != undefined) {
+                var entities = response.entities[Object.keys(response.entities)[0]];
+                resposta_robo = entities[0].value;
+            }
+
+            enter_msg += "<li>" + resposta_robo + "</li>";
+            $("#msgs_chat").html(enter_msg);
+        }
+    });
 }
