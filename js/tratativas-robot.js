@@ -38,6 +38,7 @@ function show_options(data)
     
     if (data.length > 0) {
         option = "<select id='show-options'>";
+        option += '<option value="Escolha"> Escolha </option>';
 
         data.forEach(function(item)
         {
@@ -59,4 +60,24 @@ function is_data_inDB(entity)
     }
 
     return verification;
+}
+
+function get_index_option_inDB(text, data)
+{
+    var index_search = 0;
+    var index = 0;
+
+    data.forEach(function(item)
+    {
+        index_search = item[0].search(text);
+
+        if(index_search > 0) {
+            console.log("entrei");
+            return false;
+        }
+        
+        index++;
+    });
+    
+    return index;
 }
