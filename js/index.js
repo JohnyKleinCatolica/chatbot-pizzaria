@@ -158,17 +158,23 @@ function getResponse()
         success: function(response) {
             var resposta_robo = resposta_padrao;
             var entity_name = Object.keys(response.entities)[0];
+            var options = "";
             
             if (response.entities[entity_name] != undefined) {
                 var entities = response.entities[entity_name];
                 resposta_robo = entities[0].value;
                 
                 if(is_data_inDB(entity_name) == true) {
-                    console.log(getResponseFromDB(entity_name));
+                    options = getResponseFromDB(entity_name);
                 }
             }
 
             enter_msg += "<li>" + resposta_robo + "</li>";
+
+            if(options!="") {
+                enter_msg += options;
+            }
+
             $("#msgs_chat").html(enter_msg);
         }
     });
