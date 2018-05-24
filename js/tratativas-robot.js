@@ -38,11 +38,11 @@ function show_options(data)
     
     if (data.length > 0) {
         option = "<select id='show-options'>";
-        option += '<option value="Escolha"> Escolha </option>';
+        option += '<option value="0"> Escolha </option>';
 
-        data.forEach(function(item)
+        data.forEach(function(item, index)
         {
-            option += '<option value="' + item + '">' + item + '</option>';
+            option += '<option value="' + (index+1) + '">' + item + '</option>';
         });
 
         option += "</select>";
@@ -65,18 +65,25 @@ function is_data_inDB(entity)
 function get_index_option_inDB(text, data)
 {
     var index_search = 0;
-    var index = 0;
+    var index = false;
+    var word = "";
+    text = getWordNotFormated(text);
 
-    data.forEach(function(item)
+    data.forEach(function(item, i)
     {
-        index_search = item[0].search(text);
+        item[0] = getWordNotFormated(item[0]);
 
-        if(index_search > 0) {
-            console.log("entrei");
-            return false;
-        }
+        var item_div = item[0].split(" ");
         
-        index++;
+        item_div.forEach(function(item_word)
+        {
+            index_search = item_word == text;
+
+            if(index_search != -1) {
+                index = i+1;
+            }
+        });
+
     });
     
     return index;
