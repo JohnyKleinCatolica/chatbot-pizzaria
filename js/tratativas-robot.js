@@ -5,30 +5,34 @@ var get_flavors_data =
 var get_drink_data = 
     [["Suco de laranja"], ["Suco de morango"], ["Coca-cola"], ["Pepsi-cola"], ["Caipirinha"]];
 
-function getResponseFromDB(tipo) 
+function getDataByKey(key)
 {
-    var response = "";
-    var index = 0;
-
-    switch (tipo) {
+    var data = [];
+    switch (key) {
         case "get_pizza":
             response = check_pizza_order();
             break;
         case "get_size":
-            index = get_index_option_inDB("médio",tipo);
-            response = show_options(get_size_data, index);
+            data = get_size_data;
             break;
         case "get_flavors":
-            index = get_index_option_inDB(tipo);
-            response = show_options(get_flavors_data, index);
+            data = get_flavors_data;
             break;
         case "get_drink":
-            index = get_index_option_inDB(tipo);
-            response = show_options(get_drink_data, index);
+            data = get_drink_data;
             break;
         default :
             break;
     }
+    return data;
+}
+
+function getResponseFromDB(tipo) 
+{
+    var response = "";
+    var data = getDataByKey(tipo);
+
+    response = show_options(data);
     
     return response;
 }
@@ -38,9 +42,10 @@ function check_pizza_order()
     return "Pedido realizado!";
 }
 
-function show_options(data, index_select) 
+function show_options(data) 
 {
-    option = "";
+    var option = "";
+    var id = 0;
     
     if (data.length > 0) {
         option = "<select id='show-options'>";
@@ -48,11 +53,9 @@ function show_options(data, index_select)
 
         data.forEach(function(item, index)
         {
-            option += '<option value="' + (index+1) + "'" + 'id="opt'+(index+1) + '">' + item + '</option>';
+            id = index+1;
+            option += '<option value="'+id+'">' + item + '</option>';
 
-            if (index == index_select) {
-                $('#opt'+(index+1)).attr("selected");
-            }
         });
 
         option += "</select>";

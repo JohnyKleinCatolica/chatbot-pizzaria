@@ -159,7 +159,8 @@ function getResponse()
             var resposta_robo = resposta_padrao;
             var entity_name = Object.keys(response.entities)[0];
             var options = "";
-            
+            var index = 0;
+
             if (response.entities[entity_name] != undefined) {
                 var entities = response.entities[entity_name];
                 resposta_robo = entities[0].value;
@@ -167,15 +168,17 @@ function getResponse()
                 if(is_data_inDB(entity_name) == true) {
                     options = getResponseFromDB(entity_name);
                 }
+
+                enter_msg += "<li>" + resposta_robo + "</li>";
+                
+                if(options!="") {
+                    enter_msg += options;
+                }
+
+                $("#msgs_chat").html(enter_msg);
+                index = get_index_option_inDB(response._text, getDataByKey(entity_name));
+                $('#show-options').val(index);
             }
-
-            enter_msg += "<li>" + resposta_robo + "</li>";
-
-            if(options!="") {
-                enter_msg += options;
-            }
-
-            $("#msgs_chat").html(enter_msg);
         }
     });
 }
