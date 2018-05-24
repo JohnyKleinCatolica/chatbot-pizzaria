@@ -8,19 +8,25 @@ var get_drink_data =
 function getResponseFromDB(tipo) 
 {
     var response = "";
+    var index = 0;
 
     switch (tipo) {
         case "get_pizza":
             response = check_pizza_order();
             break;
         case "get_size":
-            response = show_options(get_size_data);
+            index = get_index_option_inDB("médio",tipo);
+            response = show_options(get_size_data, index);
             break;
         case "get_flavors":
-            response = show_options(get_flavors_data);
+            index = get_index_option_inDB(tipo);
+            response = show_options(get_flavors_data, index);
             break;
         case "get_drink":
-            response = show_options(get_drink_data);
+            index = get_index_option_inDB(tipo);
+            response = show_options(get_drink_data, index);
+            break;
+        default :
             break;
     }
     
@@ -32,7 +38,7 @@ function check_pizza_order()
     return "Pedido realizado!";
 }
 
-function show_options(data) 
+function show_options(data, index_select) 
 {
     option = "";
     
@@ -42,7 +48,11 @@ function show_options(data)
 
         data.forEach(function(item, index)
         {
-            option += '<option value="' + (index+1) + '">' + item + '</option>';
+            option += '<option value="' + (index+1) + "'" + 'id="opt'+(index+1) + '">' + item + '</option>';
+
+            if (index == index_select) {
+                $('#opt'+(index+1)).attr("selected");
+            }
         });
 
         option += "</select>";
@@ -65,7 +75,7 @@ function is_data_inDB(entity)
 function get_index_option_inDB(text, data)
 {
     var index_search = 0;
-    var index = false;
+    var index = 0;
     var word = "";
     text = getWordNotFormated(text);
 
@@ -77,7 +87,7 @@ function get_index_option_inDB(text, data)
         
         item_div.forEach(function(item_word)
         {
-            index_search = item_word == text;
+            index_search = text.search(item_word);
 
             if(index_search != -1) {
                 index = i+1;
