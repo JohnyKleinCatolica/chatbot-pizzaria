@@ -10,7 +10,7 @@ function getDataByKey(key)
     var data = [];
     switch (key) {
         case "get_pizza":
-            response = pizza_order();
+            data = pizza_order();
             break;
         case "get_size":
             data = get_size_data;
@@ -32,40 +32,48 @@ function getResponseFromDB(tipo)
     var response = "";
     var data = getDataByKey(tipo);
     
-    if (tipo === "get_pizza") {
-        response = data;
-    } else {
-        response = show_options(data);
-    }
+    response = show_options(data, true);
     
     return response;
 }
 
 function pizza_order()
 {
-    var options = "";
-    options += show_options(getDataByKey("get_pizza"));
-    options += show_options(getDataByKey("get_size"));
-    options += show_options(getDataByKey("get_flavors"));
-    options += show_options(getDataByKey("get_drink"));
-    return options;
-}
+    var options_data = new Array();
+    options_data [0] = getDataByKey("get_size");
+    options_data [1] = getDataByKey("get_flavors");
+    options_data [2] = getDataByKey("get_drink");
+    return options_data;
+}   
 
-function show_options(data) 
+function show_options(data, isMatriz=false) 
 {
     var option = "";
     var id = 0;
+    var idItem = 0;
     
     if (data.length > 0) {
         option = "<select id='show-options'>";
         option += '<option value="0"> Escolha </option>';
 
-        data.forEach(function(item, index)
-        {
-            id = index+1;
-            option += '<option value="'+id+'">' + item + '</option>';
-
-        });
+        if (isMatriz==false){
+            data.forEach(function(item, index)
+            {
+                id = index+1;
+                option += '<option value="'+id+'">' + item + '</option>';
+    
+            });
+        } else {
+            data.forEach(function(item, index)
+            {
+                id = index+1;
+                data.forEach(function(item2, index2)
+                {
+                    idItem = index2+1;
+                    option += '<option value="'+idItem+'">' + item2 + '</option>';
+                });
+            });
+        }
 
         option += "</select>";
     }
