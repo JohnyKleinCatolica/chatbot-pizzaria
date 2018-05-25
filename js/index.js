@@ -1,12 +1,3 @@
-// Chat (WebRTC)
-//
-// Currently supported in Chrome and Firefox only.
-// WebRTC support is ultra basic at the moment - send/receive // in current window only.
-// Design based on Bookmarks app by // Eyal Zuri - http://dribbble.com/shots/1261465-Bookmarks-app-gif
-//
-// The below JS has been adapted from this excellent RTCDataChannel demo
-// http://simpl.info/rtcdatachannel/
-
 var sendChannel, 
     receiveChannel,
     chatWindow = document.querySelector('.chat-window'),
@@ -129,18 +120,6 @@ function handleMessage (event) {
     // Clear text value
     chatWindowMessage.value = '';
 }
-
-// function handleSendChannelStateChange () {
-//     var readyState = sendChannel.readyState;
-
-//     if (readyState == 'open') {
-//         chatWindowMessage.disabled = false;
-//         chatWindowMessage.focus();
-//     	chatWindowMessage.placeholder = "";
-//     } else {
-//         chatWindowMessage.disabled = true;
-//     }
-// }
 
 function handleReceiveChannelStateChange () {
     var readyState = receiveChannel.readyState;
