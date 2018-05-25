@@ -156,7 +156,7 @@ function getResponse()
 
                 $("#msgs_chat").html(enter_msg);
                 index = get_index_option_inDB(response._text, getDataByKey(entity_name));
-                $('#show-options').val(index);
+                $('.show-options').val(index);
             }
         }
     });

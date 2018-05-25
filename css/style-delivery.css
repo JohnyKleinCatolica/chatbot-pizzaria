@@ -13,12 +13,12 @@
   background-image: url('../img/user.jpg');
 }
 
-#show-options {
+.show-options {
   margin-bottom: 20px;
   width:100%;
 }
 
-#show-options option {
+.show-options option {
   width: 100%;
   margin: 10px;
 }
