@@ -10,7 +10,7 @@ function getDataByKey(key)
     var data = [];
     switch (key) {
         case "get_pizza":
-            response = check_pizza_order();
+            response = pizza_order();
             break;
         case "get_size":
             data = get_size_data;
@@ -31,15 +31,24 @@ function getResponseFromDB(tipo)
 {
     var response = "";
     var data = getDataByKey(tipo);
-
-    response = show_options(data);
+    
+    if (tipo === "get_pizza") {
+        response = data;
+    } else {
+        response = show_options(data);
+    }
     
     return response;
 }
 
-function check_pizza_order()
+function pizza_order()
 {
-    return "Pedido realizado!";
+    var options = "";
+    options += show_options(getDataByKey("get_pizza"));
+    options += show_options(getDataByKey("get_size"));
+    options += show_options(getDataByKey("get_flavors"));
+    options += show_options(getDataByKey("get_drink"));
+    return options;
 }
 
 function show_options(data) 
