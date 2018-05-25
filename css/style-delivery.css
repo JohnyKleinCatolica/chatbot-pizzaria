@@ -1,5 +1,4 @@
 .chat-thread {
-  width: 100%;
   height: 500px;
   margin: 24px auto;
 }
@@ -15,10 +14,20 @@
 }
 
 #show-options {
+  margin-bottom: 20px;
   width:100%;
 }
 
-#show-options option{
+#show-options option {
   width: 100%;
   margin: 10px;
+}
+
+.chat-window-message {
+  background-color: #0af7ff14;
+}
+
+#enter_msg_chat {
+  padding: 15px;
+  font-size: 120%;
 }
