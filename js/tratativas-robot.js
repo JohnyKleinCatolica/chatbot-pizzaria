@@ -29,12 +29,15 @@ function getDataByKey(key)
 
 function getResponseFromDB(tipo) 
 {
+    getOrder();
+
     var response = "";
     var data = getDataByKey(tipo);
     
     response = 
-        tipo=="get_pizza" ? show_options(data, ["get_size", "get_flavors", "get_drink"], true) 
-        : show_options(data, tipo);
+        tipo=="get_pizza" ? 
+            show_options(data, ["get_size", "get_flavors", "get_drink"], true) 
+            : show_options(data, tipo);
     
     return response;
 }
@@ -45,6 +48,7 @@ function pizza_order()
     options_data [0] = getDataByKey("get_size");
     options_data [1] = getDataByKey("get_flavors");
     options_data [2] = getDataByKey("get_drink");
+
     return options_data;
 }   
 
@@ -107,12 +111,11 @@ function get_index_option_inDB(text, data)
 {
     var index_search = 0;
     var index = 0;
-    var word = "";
-    text = getWordNotFormated(text);
+    text = $.isArray(text) ? "" : getWordNotFormated(text);
 
     data.forEach(function(item, i)
     {
-        item[0] = getWordNotFormated(item[0]);
+        item[0] = getWordNotFormated(item[0][0]);
 
         var item_div = item[0].split(" ");
         
@@ -132,6 +135,17 @@ function get_index_option_inDB(text, data)
 
 function getOrder()
 {
-    $(".op-get_drink").val();
-    $(".op-get_drink option[value=2]").html();
+    $(".op-get_size").on("change",function(){
+        // $(".op-get_drink").val();
+        // $(".op-get_drink option[value=2]").html();
+        alert("Ma ôe!");
+    });
+
+    $(".op-get_drink").on("change",function(){
+        alert("Ma ô22!");
+    });
+
+    $(".op-get_flavors").on("change",function(){
+        alert("Ma ô33!");
+    });
 }
