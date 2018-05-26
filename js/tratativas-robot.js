@@ -32,7 +32,7 @@ function getResponseFromDB(tipo)
     var response = "";
     var data = getDataByKey(tipo);
     
-    response = tipo=="get_pizza" ? show_options(data, true) : show_options(data);
+    response = tipo=="get_pizza" ? show_options(data, tipo, true) : show_options(data, tipo);
     
     return response;
 }
@@ -46,7 +46,7 @@ function pizza_order()
     return options_data;
 }   
 
-function show_options(data, isMatriz=false) 
+function show_options(data, entity, isMatriz=false) 
 {
     var option = "";
     var option2 = "";
@@ -56,7 +56,7 @@ function show_options(data, isMatriz=false)
     if (data.length > 0) {
 
         if (isMatriz==false){
-            option = "<select class='show-options'>";
+            option = "<select class='show-options sp-"+entity+"'>";
             option += '<option value="0"> Escolha </option>';
 
             data.forEach(function(item, index)
@@ -70,7 +70,7 @@ function show_options(data, isMatriz=false)
         } else {
             data.forEach(function(item, index)
             {
-                option2 = "<select class='show-options'>";
+                option2 = "<select class='show-options sp-"+entity+"'>";
                 option2 += '<option value="0"> Escolha </option>';
 
                 id = index+1;
