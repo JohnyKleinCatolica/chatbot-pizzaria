@@ -12,6 +12,10 @@ var Size = class Size {
     getLiteralName(){
         return "Tamanhos";
     }
+
+    getPronomes(){
+        return "os";
+    }
 }
 
 var Flavor = class Flavor {
@@ -28,6 +32,10 @@ var Flavor = class Flavor {
     getLiteralName(){
         return "Sabores";
     }
+
+    getPronomes(){
+        return "os";
+    }
 }
 
 var Drink = class Drink {
@@ -43,5 +51,9 @@ var Drink = class Drink {
 
     getLiteralName(){
         return "Bebidas";
+    }
+
+    getPronomes(){
+        return "as";
     }
 }
