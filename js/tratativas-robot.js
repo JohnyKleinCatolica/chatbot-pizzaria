@@ -1,32 +1,3 @@
-var get_size_data = 
-    [["Grande (45cm)"], ["Médio (30cm)"], ["Pequeno (20cm)"]];
-var get_flavors_data = 
-    [["Quatro queijos"], ["Calabresa"], ["Tomate seco"], ["Banana Nevada"], ["Prestígio"]];
-var get_drink_data = 
-    [["Suco de laranja"], ["Suco de morango"], ["Coca-cola"], ["Pepsi-cola"], ["Caipirinha"]];
-
-var sizes = [];
-var size1 = new Size("Grande (45cm)", "teste.jpg", 40.99);    
-var size2 = new Size("Médio (30cm)", "teste.jpg", 29.99);    
-var size3 = new Size("Pequeno (20cm)", "teste.jpg", 20.99);
-sizes = [size1, size2, size3];
-
-var flavors = [];
-var flavor1 = new Flavor("Quatro queijos", "teste.jpg", 40.99);    
-var flavor2 = new Flavor("Calabresa", "teste.jpg", 29.99);    
-var flavor3 = new Flavor("Tomate seco", "teste.jpg", 29.99);    
-var flavor4 = new Flavor("Banana nevada", "teste.jpg", 29.99);    
-var flavor5 = new Flavor("Prestígio", "teste.jpg", 29.99);    
-flavors = [flavor1, flavor2, flavor3, flavor4, flavor5];
-
-var drinks = [];
-var drink1 = new Drink("Suco de laranja", "teste.jpg", 4.99);   
-var drink2 = new Drink("Suco de morango", "teste.jpg", 4.99);   
-var drink3 = new Drink("Coca-cola", "teste.jpg", 9.99);   
-var drink4 = new Drink("Fanta uva", "teste.jpg", 7.99);   
-var drink5 = new Drink("Caipirinha", "teste.jpg", 5.99);   
-drinks = [drink1, drink2, drink3, drink4, drink5];
-
 function getDataByKey(key)
 {
     var data = [];
@@ -35,13 +6,13 @@ function getDataByKey(key)
             data = show_itens_order();
             break;
         case "get_size":
-            data = get_size_data;
+            data = sizes;
             break;
         case "get_flavors":
-            data = get_flavors_data;
+            data = flavors;
             break;
         case "get_drink":
-            data = get_drink_data;
+            data = drinks;
             break;
         default :
             break;
@@ -88,7 +59,7 @@ function show_options(data, entity, isMatriz=false)
             data.forEach(function(item, index)
             {
                 id = index+1;
-                option += '<option value="'+id+'">' + item + '</option>';
+                option += '<option value="'+id+'">' + item.name + '</option>';
     
             });
             option += "</select>";
@@ -103,7 +74,7 @@ function show_options(data, entity, isMatriz=false)
                 data[index].forEach(function(item2, index2)
                 {
                     idItem = index2+1;
-                    option2 += '<option value="'+idItem+'">' + item2 + '</option>';
+                    option2 += '<option value="'+idItem+'">' + item2.name + '</option>';
                 });
                 
                 option2 += "</select>";
