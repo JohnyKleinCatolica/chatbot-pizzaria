@@ -31,3 +31,20 @@
   padding: 15px;
   font-size: 120%;
 }
+
+#btn-order {
+  width: 90%;
+  background-color: #136889;
+  border-color: #136889;
+}
+
+#btn-order :hover {
+  background-color: #07435a;
+  border-color: #07435a;
+}
+
+@media (min-width: 767px){
+  #btn-order {
+    width: 50%;
+  }
+}

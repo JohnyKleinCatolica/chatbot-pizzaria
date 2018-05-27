@@ -131,21 +131,12 @@ function get_index_option_inDB(text, data)
     return index;
 }
 
-function setItensOrder()
+function getItensOrder()
 {
     var itens_order = [];
-
-    $(".op-get_size").on("change",function(){
-        itens_order[0] = getOptionSelected(".op-get_size");
-    });
-
-    $(".op-get_drink").on("change",function(){
-        itens_order[1] = getOptionSelected(".op-get_drink");
-    });
-
-    $(".op-get_flavors").on("change",function(){
-        itens_order[2] = getOptionSelected(".op-get_flavors");
-    });
+    itens_order[0] = getOptionSelected(".op-get_size");
+    itens_order[1] = getOptionSelected(".op-get_drink");
+    itens_order[2] = getOptionSelected(".op-get_flavors");
 
     return itens_order;
 }
