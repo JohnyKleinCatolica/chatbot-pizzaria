@@ -1,6 +1,6 @@
 var Size = class Size {
-    constructor(size="", image="", price="") {
-        this.size = "";
+    constructor(size="", image="", price=0) {
+        this.size = size;
         this.image = image;
         this.price = price;
     }
@@ -16,7 +16,7 @@ var Size = class Size {
 
 var Flavor = class Flavor {
     constructor(flavor="", image="", price="") {
-        this.flavor = "";
+        this.flavor = flavor;
         this.image = image;
         this.price = price;
     }
@@ -32,7 +32,7 @@ var Flavor = class Flavor {
 
 var Drink = class Drink {
     constructor(drink="", image="", price="") {
-        this.drink = "";
+        this.drink = drink;
         this.image = image;
         this.price = price;
     }
