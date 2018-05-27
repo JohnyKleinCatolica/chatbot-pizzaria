@@ -126,7 +126,7 @@ function get_index_option_inDB(text, data)
 
 function getItensOrder()
 {
-    var itens_order = [];
+    var itens_order = new Array();
     itens_order[0] = getOptionSelected(".op-get_size");
     itens_order[1] = getOptionSelected(".op-get_drink");
     itens_order[2] = getOptionSelected(".op-get_flavors");
@@ -144,33 +144,60 @@ function getOptionSelected(classe)
     return option;
 }
 
-// getNamesItens()
-// {
-//     var names_itens = [];
-//     names_itens[0] = getNameSelected(".op-get_size");
-//     names_itens[1] = getNameSelected(".op-get_drink");
-//     names_itens[2] = getNameSelected(".op-get_flavors");
+function getNamesItens()
+{
+    var names_itens = new Array();
+    names_itens[0] = getNameSelected(".op-get_size");
+    names_itens[1] = getNameSelected(".op-get_drink");
+    names_itens[2] = getNameSelected(".op-get_flavors");
+    
+    names_itens[0] = names_itens[0]==null ? "tamanho" : names_itens[0].toLowerCase();
+    names_itens[1] = names_itens[1]==null ? "bebida" : names_itens[1].toLowerCase();
+    names_itens[2] = names_itens[2]==null ? "sabor" : names_itens[2].toLowerCase();
+    
+    return names_itens;
+}
 
-//     return names_itens;
-// }
 
+function getNameSelected(classe){
+    var name = "";
+    var forGetHtml = classe + " option[value='0']";
+    name = $(forGetHtml).attr("name");
 
-// function getNameSelected(classe){
-//     var name = "";
-//     var forGetHtml = classe + " option[value='0']";
-//     name = $(forGetHtml).attr("name");
-
-//     return name;
-// }
+    return name;
+}
 
 function getOrder(){
     var itens = getItensOrder();
-    //var names = getNamesItens();
+    var names = getNamesItens();
+    var possibleFinish = 0;
+    
     itens.forEach(function(item, index){
-        if(item==null || item=="" || $.trim(item)=="Escolha") {
-            alert("Sem " + item + " selecionado");
+        var index_escolha = item==null ? -1 : item.indexOf("Escolha");
+        if (item==null || item=="" || index_escolha==0) {
+            if (obrigatory_item(names[index])){
+                alert("O(a) " + names[index] + " é obrigatório!");
+            }
         } else {
-            alert(item + " selecionado");
+            possibleFinish++;
         }
     });
+
+    if (possibleFinish >= 2) {
+        finishOrder();
+    }
+}
+
+function obrigatory_item(item){
+    var obrigatory = false;
+    item = item==null ? "" : item.toLowerCase();
+
+    if (item == "sabor" || item == "tamanho"){
+        obrigatory = true;
+    }
+    return obrigatory;
+}
+
+function finishOrder() {
+    alert("Compra finalizada!");
 }
