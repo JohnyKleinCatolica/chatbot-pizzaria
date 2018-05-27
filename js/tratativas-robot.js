@@ -149,3 +149,14 @@ function getOptionSelected(classe){
 
     return option;
 }
+
+function getOrder(){
+    var itens = getItensOrder();
+    itens.forEach(function(item){
+        if(item=="" || $.trim(item)=="Escolha"){
+            alert("Sem " + item + " selecionado");
+        } else {
+            alert(item + " selecionado");
+        }
+    });
+}
