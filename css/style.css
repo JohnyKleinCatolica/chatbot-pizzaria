@@ -101,7 +101,6 @@ body {
 
 .chat-window {
   position: fixed;
-  bottom: 18px;
 }
 
 .chat-window-message {

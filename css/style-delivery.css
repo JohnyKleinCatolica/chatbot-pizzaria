@@ -1,6 +1,6 @@
 .chat-thread {
   height: 500px;
-  margin: 24px auto;
+  margin: 24px auto 0px auto;
 }
 
 .chat-thread li:nth-child(even):before {
@@ -36,6 +36,8 @@
   width: 90%;
   background-color: #136889;
   border-color: #136889;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 #btn-order :hover {
