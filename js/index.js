@@ -139,11 +139,11 @@ function getResponse()
         method: 'GET',
         success: function(response) {
             var resposta_robo = resposta_padrao;
-            var entity_name = Object.keys(response.entities)[0];
+            var entity_name = response.entities==null ? "" : Object.keys(response.entities)[0];
             var options = "";
             var index = 0;
 
-            if (response.entities[entity_name] != undefined) {
+            if (entity_name != "") {
                 var entities = response.entities[entity_name];
                 resposta_robo = entities[0].value;
                 
