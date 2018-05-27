@@ -152,8 +152,9 @@ function getOptionSelected(classe){
 
 function getOrder(){
     var itens = getItensOrder();
+
     itens.forEach(function(item){
-        if(item=="" || $.trim(item)=="Escolha"){
+        if(item==null || item=="" || $.trim(item)=="Escolha"){
             alert("Sem " + item + " selecionado");
         } else {
             alert(item + " selecionado");
