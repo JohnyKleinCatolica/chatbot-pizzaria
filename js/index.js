@@ -152,6 +152,7 @@ function getResponse()
                 
                 if(options!="") {
                     enter_msg += options;
+                    $("#btn-order").removeAttr("style");
                 }
 
                 $("#msgs_chat").html(enter_msg);
