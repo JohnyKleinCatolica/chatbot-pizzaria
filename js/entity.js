@@ -10,11 +10,11 @@ var Size = class Size {
     }
 
     getLiteralName(){
-        return "Tamanhos";
+        return "Tamanho";
     }
 
     getPronomes(){
-        return "os";
+        return "o";
     }
 }
 
@@ -30,11 +30,11 @@ var Flavor = class Flavor {
     }
 
     getLiteralName(){
-        return "Sabores";
+        return "Sabor";
     }
 
     getPronomes(){
-        return "os";
+        return "o";
     }
 }
 
@@ -50,10 +50,10 @@ var Drink = class Drink {
     }
 
     getLiteralName(){
-        return "Bebidas";
+        return "Bebida";
     }
 
     getPronomes(){
-        return "as";
+        return "a";
     }
 }

@@ -54,12 +54,12 @@ function show_options(data, entity, isMatriz=false)
 
         if (isMatriz==false){
             option = "<select class='show-options op-"+entity+"'>";
-            option += '<option value="0">Escolha '+ data[0].getPronomes() + ': ' + data[0].getLiteralName() + '</option>';
+            option += '<option value="0" name="'+data[0].getLiteralName()+'">Escolha '+ data[0].getPronomes() + ': ' + data[0].getLiteralName() + '</option>';
  
             data.forEach(function(item, index)
             {
                 id = index+1;
-                option += '<option value="'+id+'" class="'+item.getLiteralName()+'">' + item.name + '</option>';
+                option += '<option value="'+id+'" name="'+item.getLiteralName()+'">' + item.name + '</option>';
     
             });
             option += "</select>";
@@ -68,13 +68,13 @@ function show_options(data, entity, isMatriz=false)
             data.forEach(function(item, index)
             {
                 option2 = "<select class='show-options op-"+entity[index]+"'>";
-                option2 += '<option value="0">Escolha ' + item[0].getPronomes() + ': ' + item[0].getLiteralName() + '</option>';
+                option2 += '<option value="0" name="'+item[0].getLiteralName()+'">Escolha ' + item[0].getPronomes() + ': ' + item[0].getLiteralName() + '</option>';
 
                 id = index+1;
                 data[index].forEach(function(item2, index2)
                 {
                     idItem = index2+1;
-                    option2 += '<option value="'+idItem+'" class="'+item2.getLiteralName()+'">' + item2.name + '</option>';
+                    option2 += '<option value="'+idItem+'" name="'+item2.getLiteralName()+'">' + item2.name + '</option>';
                 });
                 
                 option2 += "</select>";
@@ -134,7 +134,8 @@ function getItensOrder()
     return itens_order;
 }
 
-function getOptionSelected(classe){
+function getOptionSelected(classe)
+{
     var option = "";
     var value = $(classe).val();
     var forGetHtml = classe + " option[value='"+value+"']";
@@ -143,10 +144,29 @@ function getOptionSelected(classe){
     return option;
 }
 
+// getNamesItens()
+// {
+//     var names_itens = [];
+//     names_itens[0] = getNameSelected(".op-get_size");
+//     names_itens[1] = getNameSelected(".op-get_drink");
+//     names_itens[2] = getNameSelected(".op-get_flavors");
+
+//     return names_itens;
+// }
+
+
+// function getNameSelected(classe){
+//     var name = "";
+//     var forGetHtml = classe + " option[value='0']";
+//     name = $(forGetHtml).attr("name");
+
+//     return name;
+// }
+
 function getOrder(){
     var itens = getItensOrder();
-
-    itens.forEach(function(item){
+    //var names = getNamesItens();
+    itens.forEach(function(item, index){
         if(item==null || item=="" || $.trim(item)=="Escolha") {
             alert("Sem " + item + " selecionado");
         } else {
