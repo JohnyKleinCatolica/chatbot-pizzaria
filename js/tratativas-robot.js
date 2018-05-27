@@ -10,7 +10,7 @@ function getDataByKey(key)
     var data = [];
     switch (key) {
         case "get_pizza":
-            data = pizza_order();
+            data = show_itens_order();
             break;
         case "get_size":
             data = get_size_data;
@@ -29,8 +29,6 @@ function getDataByKey(key)
 
 function getResponseFromDB(tipo) 
 {
-    getOrder();
-
     var response = "";
     var data = getDataByKey(tipo);
     
@@ -42,7 +40,7 @@ function getResponseFromDB(tipo)
     return response;
 }
 
-function pizza_order()
+function show_itens_order()
 {
     var options_data = new Array();
     options_data [0] = getDataByKey("get_size");
@@ -115,7 +113,7 @@ function get_index_option_inDB(text, data)
 
     data.forEach(function(item, i)
     {
-        item[0] = getWordNotFormated(item[0][0]);
+        item[0] = getWordNotFormated(item[0]);
 
         var item_div = item[0].split(" ");
         
@@ -133,19 +131,30 @@ function get_index_option_inDB(text, data)
     return index;
 }
 
-function getOrder()
+function setItensOrder()
 {
+    var itens_order = [];
+
     $(".op-get_size").on("change",function(){
-        // $(".op-get_drink").val();
-        // $(".op-get_drink option[value=2]").html();
-        alert("Ma ôe!");
+        itens_order[0] = getOptionSelected(".op-get_size");
     });
 
     $(".op-get_drink").on("change",function(){
-        alert("Ma ô22!");
+        itens_order[1] = getOptionSelected(".op-get_drink");
     });
 
     $(".op-get_flavors").on("change",function(){
-        alert("Ma ô33!");
+        itens_order[2] = getOptionSelected(".op-get_flavors");
     });
+
+    return itens_order;
+}
+
+function getOptionSelected(classe){
+    var option = "";
+    var value = $(classe).val();
+    var forGetHtml = classe + " option[value='"+value+"']";
+    option = $(forGetHtml).html();
+
+    return option;
 }
