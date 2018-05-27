@@ -5,12 +5,15 @@ var sendChannel,
     chatThread = document.querySelector('.chat-thread');
     enter_msg = ""
     resposta_padrao = "Desculpa, não entendi. Mas estou aprendendo!";    
-
+    pixelsTop = 1000;
 // Create WebRTC connection
 createConnection();
 
 // On form submit, send message
 chatWindow.onsubmit = function (e) {
+    pixelsTop += 1000;
+    $('#msgs_chat').animate({scrollTop:pixelsTop});
+    
 	e.preventDefault();
 
 	sendData();
