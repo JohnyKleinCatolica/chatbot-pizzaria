@@ -3,16 +3,6 @@
   margin: 24px auto 0px auto;
 }
 
-.chat-thread li:nth-child(even):before {
-  left: -80px;
-  background-image: url('../img/robot.jpg');
-}
-
-.chat-thread li:nth-child(odd):before {
-  right: -80px;
-  background-image: url('../img/user.jpg');
-}
-
 .show-options {
   margin-bottom: 20px;
   width:100%;

@@ -73,7 +73,7 @@ function createConnection () {
 }
 
 function sendData () {
-    enter_msg += "<li>" + $("#enter_msg_chat").val() + "</li>";
+    enter_msg += "<li class='rsp-user'>" + $("#enter_msg_chat").val() + "</li>";
     $("#msgs_chat").html(enter_msg);
     getResponse();
     $("#enter_msg_chat").val("");
@@ -151,7 +151,7 @@ function getResponse()
                     options = getResponseFromDB(entity_name);
                 }
 
-                enter_msg += "<li>" + resposta_robo + "</li>";
+                enter_msg += "<li class='rsp-robot'>" + resposta_robo + "</li>";
                 
                 if(options!="") {
                     enter_msg += options;
