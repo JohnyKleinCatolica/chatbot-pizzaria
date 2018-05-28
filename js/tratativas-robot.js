@@ -106,7 +106,7 @@ function get_index_option_inDB(text, data)
 
     data.forEach(function(item, i)
     {
-        item[0] = getWordNotFormated(item[0]);
+        item[0] = getWordNotFormated(item[0].name);
 
         var item_div = item[0].split(" ");
         
@@ -170,7 +170,7 @@ function getNameSelected(classe){
 function getOrder(){
     var itens = getItensOrder();
     var names = getNamesItens();
-    var possibleFinish = 0;
+    var itensOrder = [];
     
     itens.forEach(function(item, index){
         var index_escolha = item==null ? -1 : item.indexOf("Escolha");
@@ -179,12 +179,12 @@ function getOrder(){
                 alert("O(a) " + names[index] + " é obrigatório!");
             }
         } else {
-            possibleFinish++;
+            itensOrder.push(item);
         }
     });
 
-    if (possibleFinish >= 2) {
-        finishOrder();
+    if (itensOrder.length >= 2) {
+        finishOrder(itensOrder);
     }
 }
 
@@ -198,6 +198,7 @@ function obrigatory_item(item){
     return obrigatory;
 }
 
-function finishOrder() {
+function finishOrder(itensOrder) {
+    console.log(itensOrder)
     alert("Compra finalizada!");
 }
