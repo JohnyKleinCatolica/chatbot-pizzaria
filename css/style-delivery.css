@@ -40,3 +40,13 @@
     width: 50%;
   }
 }
+
+@media (max-width: 400px){
+  h4 {
+    font-size: 1.3rem;
+  }
+}
+
+#modalBody img {
+  width: 100%;
+}
