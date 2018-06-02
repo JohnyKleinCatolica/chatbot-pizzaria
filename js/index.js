@@ -162,6 +162,7 @@ function getResponse()
                 index = get_index_option_inDB(response._text, getDataByKey(entity_name));
                 $('.show-options').val(index);
             }
+            showValueProducts(entity_name);
         }
     });
 }

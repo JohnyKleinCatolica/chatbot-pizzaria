@@ -235,3 +235,17 @@ function finishOrder(itensOrder) {
     
     $("#modalBody").html(itens);
 }
+
+function showValueProducts(entity) {
+    var option = new Array();
+    var resposta = "";
+
+    $(".show-options").on("change", function(){
+        option = getOptionSelected(".op-" + entity);
+        resposta = "Valor d" + option.getPronomes() + " " + option.getLiteralName() +" é " + option.price;
+    });
+
+    if (resposta!=""){
+        $("#msgs_chat").html("<li class='rsp-robot'>" + respota + "</li>");
+    }
+}
