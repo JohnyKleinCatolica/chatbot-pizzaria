@@ -1,3 +1,9 @@
+function getInitialSalution()
+{
+    return "<li class='rsp-robot'>Faça seu pedido, estou pronto para lhe antender!</li>";
+}
+$("#msgs_chat").html(getInitialSalution());
+
 function getDataByKey(key)
 {
     var data = new Array();
