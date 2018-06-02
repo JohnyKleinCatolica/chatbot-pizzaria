@@ -23,22 +23,16 @@
 }
 
 #btn-order {
-  width: 90%;
   background-color: #136889;
   border-color: #136889;
   margin-top: 20px;
   margin-bottom: 5px;
+  width: 20%;
 }
 
 #btn-order :hover {
   background-color: #07435a;
   border-color: #07435a;
-}
-
-@media (min-width: 767px) and (max-width: 1290px){
-  #btn-order {
-    width: 50%;
-  }
 }
 
 @media (max-width: 767px)
