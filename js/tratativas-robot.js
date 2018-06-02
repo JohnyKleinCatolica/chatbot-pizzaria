@@ -37,10 +37,11 @@ function getResponseFromDB(tipo)
     var response = "";
     var data = getDataByKey(tipo);
     
-    response = 
-        tipo=="get_pizza" ? 
-            show_options(data, ["get_size", "get_flavors", "get_drink"], true) 
-            : show_options(data, tipo);
+    if (tipo=="get_pizza") { 
+        response = show_options(data, ["get_size", "get_flavors", "get_drink"], true);
+    } else {
+        response = show_options(data, tipo);
+    }
     
     return response;
 }
