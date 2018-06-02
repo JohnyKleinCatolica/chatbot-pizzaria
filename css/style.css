@@ -122,20 +122,18 @@ body {
   }
 
   .chat-window {
-    left: 5%;
     width: 90%;
   }
 }
 /* Medium and large screens */
 @media all and (min-width: 768px) {
   .chat-thread {
-    width: 30%;
+    width: 471px;
     height: 320px;
   }
 
   .chat-window {
-    left: 35%;
-    width: 30%;
+    width: 500px;
   }
 }
 @keyframes show-chat-even {

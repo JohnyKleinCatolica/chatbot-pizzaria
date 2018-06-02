@@ -35,9 +35,20 @@
   border-color: #07435a;
 }
 
-@media (min-width: 767px){
+@media (min-width: 767px) and (max-width: 1290px){
   #btn-order {
-    width: 30%;
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px)
+{
+  .chat-window {
+    width: 90%;
+  }
+
+  #btn-order {
+    width: 70%;
   }
 }
 
@@ -48,5 +59,13 @@
 }
 
 #modalBody img {
-  width: 100%;
+  width: 100%;  
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
