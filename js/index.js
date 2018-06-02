@@ -2,9 +2,9 @@ var sendChannel,
     receiveChannel,
     chatWindow = document.querySelector('.chat-window'),
     chatWindowMessage = document.querySelector('.chat-window-message'),
-    chatThread = document.querySelector('.chat-thread');
-    enter_msg = ""
-    resposta_padrao = "Desculpa, não entendi. Mas estou aprendendo!";    
+    chatThread = document.querySelector('.chat-thread'),
+    enter_msg = getInitialSalution(),
+    resposta_padrao = "Desculpa, não entendi. Mas estou aprendendo!",
     pixelsTop = 1000;
 // Create WebRTC connection
 createConnection();
