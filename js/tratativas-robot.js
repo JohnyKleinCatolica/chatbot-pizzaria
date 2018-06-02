@@ -106,9 +106,9 @@ function is_data_inDB(entity)
 
 function get_index_option_inDB(text, data)
 {
-    /*var index_search = 0;
+    var index_search = 0;
     var index = 0;
-    text = $.isArray(text) ? "" : getWordNotFormated(text);
+    /*text = $.isArray(text) ? "" : getWordNotFormated(text);
 
     data.forEach(function(item, i)
     {
@@ -125,9 +125,9 @@ function get_index_option_inDB(text, data)
             }
         });
 
-    });
+    });*/
     
-    return index;*/
+    return index;
 }
 
 function getItensOrder()
