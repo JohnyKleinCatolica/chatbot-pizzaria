@@ -129,13 +129,13 @@ body {
 /* Medium and large screens */
 @media all and (min-width: 768px) {
   .chat-thread {
-    width: 50%;
+    width: 30%;
     height: 320px;
   }
 
   .chat-window {
-    left: 25%;
-    width: 50%;
+    left: 35%;
+    width: 30%;
   }
 }
 @keyframes show-chat-even {
