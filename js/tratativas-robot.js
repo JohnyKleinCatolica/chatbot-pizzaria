@@ -115,24 +115,25 @@ function get_index_option_inDB(text, data)
 {
     var index_search = 0;
     var index = 0;
-    /*text = $.isArray(text) ? "" : getWordNotFormated(text);
+    text = $.isArray(text) ? "" : getWordNotFormated(text);
 
     data.forEach(function(item, i)
     {
-        item[0] = getWordNotFormated(item[0].name);
+        if ($.isArray(item) == false) {
+            item = getWordNotFormated(item.name);
 
-        var item_div = item[0].split(" ");
-        
-        item_div.forEach(function(item_word)
-        {
-            index_search = text.search(item_word);
-
-            if(index_search != -1) {
-                index = i+1;
-            }
-        });
-
-    });*/
+            var item_div = item.split(" ");
+            
+            item_div.forEach(function(item_word)
+            {
+                index_search = text.search(item_word);
+    
+                if(index_search != -1) {
+                    index = i+1;
+                }
+            });
+        }
+    });
     
     return index;
 }
