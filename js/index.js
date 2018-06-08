@@ -145,7 +145,7 @@ function getResponse()
 
             if (entity_name != "") {
                 var entities = response.entities[entity_name];
-                resposta_robo = entities[0].value;
+                resposta_robo = entities === undefined ? resposta_robo : entities[0].value;
                 
                 if(is_data_inDB(entity_name) == true) {
                     options = getResponseFromDB(entity_name);
