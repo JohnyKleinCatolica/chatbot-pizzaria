@@ -152,13 +152,13 @@ function getOptionSelected(classe)
 {
     var option = "";
     var objOption = new Array();
-    var value = $(classe).val();
+    var value = $(classe).val() === undefined ? 0 : $(classe).val();
     var forGetValue = classe + " option[value='"+value+"']";
     var index_escolha = -1;
     var data_entity = $(forGetValue).attr("data-entity");
 
     option = $(forGetValue).html();
-    index_escolha = option.indexOf("Escolha");
+    index_escolha = option === undefined ? -1 : option.indexOf("Escolha");
 
     if(index_escolha == -1) {
         objOption = getItemDataByKey(data_entity, value);
